@@ -8,7 +8,7 @@ XAUTH=/tmp/.docker.xauth
 # paths
 BASE_PATH=/home/docker
 GUEST_SSH=/home/docker/.ssh
-DOCKERSETUP_PATH=/home/docker/dockersetup
+DOCKERSETUP_PATH=/home/docker/docker-tbb12
 TORCONFIG_PATH=/home/docker/tor-config
 # TBB_PATH=/home/docker/tor-browser_en-US/
 
@@ -47,7 +47,7 @@ b=2
 mode=clean
 open=0
 
-fingerprint=3D78AD56A9D95CF08CB3FFCF96DD7F0C9565368E
+fingerprint=7092D3AF094CC6AD606DD37CF04B6C3AF0F6BD7C
 
 
 

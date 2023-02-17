@@ -27,7 +27,7 @@ ethtool -K ${DEVICE} tx off rx off tso off gso off gro off lro off
 # cp TBB repository to container's own space
 echo "Get TBB"
 pushd ${BASE}
-cp ./dockersetup/tor-browser.tar.xz ${BASE}/tor-browser-cp.tar.xz
+cp ./docker-tbb12/put_tbb12_heretor-browser.tar.xz ${BASE}/tor-browser-cp.tar.xz
 tar -xf tor-browser-cp.tar.xz -C ${BASE}
 rm ${BASE}/tor-browser-cp.tar.xz
 
@@ -59,5 +59,5 @@ fi
 pushd ${BASE}/AlexaCrawler
 export MOZ_HEADLESS=1
 
-## TBB11 requires non-root to run 
+## TBB12 requires non-root to run
 sudo -u docker -H python ${crawler}
