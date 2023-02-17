@@ -4,6 +4,7 @@
 # IMPORTANT: If this file is changed, docker container needs to be rebuilt
 DEVICE=eth0
 BASE='/home/docker'
+FOLDER_NAME='docker-tbb12'
 
 AUTO_CONFIG_PATH='/home/docker/tor-browser/Browser/defaults/pref/ '
 TORRC_CONFIG_PATH='/home/docker/tor-browser/Browser/'
@@ -27,13 +28,13 @@ ethtool -K ${DEVICE} tx off rx off tso off gso off gro off lro off
 # cp TBB repository to container's own space
 echo "Get TBB"
 pushd ${BASE}
-cp ./docker-tbb12/put_tbb12_heretor-browser.tar.xz ${BASE}/tor-browser-cp.tar.xz
+cp ./${FOLDER_NAME}/put_tbb12_here/tor-browser.tar.xz ${BASE}/tor-browser-cp.tar.xz
 tar -xf tor-browser-cp.tar.xz -C ${BASE}
 rm ${BASE}/tor-browser-cp.tar.xz
 
 # set user profile js file
-cp /home/docker/dockersetup/autoconfig.js ${AUTO_CONFIG_PATH}
-cp /home/docker/dockersetup/firefox.cfg ${TORRC_CONFIG_PATH}
+cp /home/docker/${FOLDER_NAME}/autoconfig.js ${AUTO_CONFIG_PATH}
+cp /home/docker/${FOLDER_NAME}/firefox.cfg ${TORRC_CONFIG_PATH}
 
 # Write in torrc that can not be set in firefox.cfg 
 echo 'ClientTransportPlugin '${wfd}' exec /home/docker/'${PT}'-cp/obfs4proxy/obfs4proxy' >> ${TORRC_PATH}
