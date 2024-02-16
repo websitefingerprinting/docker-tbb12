@@ -43,12 +43,9 @@ start=0
 end=100
 
 m=5
-b=2
+b=6
 mode=clean
 open=0
-
-fingerprint=7092D3AF094CC6AD606DD37CF04B6C3AF0F6BD7C
-
 
 
 
