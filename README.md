@@ -47,8 +47,11 @@ To run the modified browser, simply use the command `./Browser/start-tor-browser
 On any headless server or inside the docker, simply use `export MOZ_HEADLESS=1` (See `Entrypoint.sh`). 
 
 ### 5. Use our docker container
+***NOTE that: please use rootless docker to run the container as TBB 12 does not allow root privilege.***
+
 In this folder, type `make build` to build the docker image. Then use `make run` to launch the crawl. 
 Remember to check the necessary parameters in the `Makefile`. 
+Do check the `volumes` as you may have a different path than I do.
 The docker will execute `Entrypoint.sh` after launch. 
 Do modify it if you use your own crawler (See Line 65 in `Entrypoint.sh`).
 
@@ -58,9 +61,14 @@ We have uploaded the modified TBB version 12.0.3 to this repository so that you 
 just follow the above steps.
 
 
+### Reminder
+These should be very important when you first use the dockerized TBB 12 
+
+1. Do remember to replace the correct info in `Line 37` of `firefox.cfg`.
+
 ## Acknowledgment
 - Thanks for the help from Hamy on how to hack firefox. 
 - The Makefile is based on Nate Mathews's project [Tor-Browser-Crawler-Video](https://github.com/notem/tor-browser-crawler-video). 
 
 ## Contact 
-Feel free to email me for any problem (jgongac at connect dot ust dot hk). 
+Feel free to email me for any problem (gongjj at comp dot nus dot edu dot sg). 
