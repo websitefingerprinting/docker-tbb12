@@ -15,10 +15,7 @@ PT='wfdef'
 
 wfd=$1
 tag=$2
-port=$3
-fingerprint=$4
-cert=$5
-crawler=$6
+crawler=$3
 
 
 # set offloads
@@ -27,6 +24,7 @@ ethtool -K ${DEVICE} tx off rx off tso off gso off gro off lro off
 
 # cp TBB repository to container's own space
 echo "Get TBB"
+# shellcheck disable=SC2164
 pushd ${BASE}
 cp ./${FOLDER_NAME}/put_tbb12_here/tor-browser.tar.xz ${BASE}/tor-browser-cp.tar.xz
 tar -xf tor-browser-cp.tar.xz -C ${BASE}
@@ -51,12 +49,13 @@ chmod -R 777 /home/docker/${PT}-cp
 
 if [ "${wfd}" == "wfgan" ]; then
 	echo "Start pyserver..."
-	python3 /home/${PT}-cp/transports/wfgan/grpc/py/server.py --log /home/docker/tor-config/pyserver_${tag}.log -c observer &
+	python3 /home/docker/${PT}-cp/transports/wfgan/grpc/py/server.py --log /home/docker/tor-config/pyserver_${tag}.log -c observer &
 	sleep 5
 fi
 
 
 # # launch crawler
+# shellcheck disable=SC2164
 pushd ${BASE}/AlexaCrawler
 export MOZ_HEADLESS=1
 

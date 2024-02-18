@@ -50,11 +50,11 @@ open=0
 
 
 ## null
-wfd=null
-cert=""
+# wfd=null
+# cert=""
 ## wfgan
-# wfd=wfgan
-# cert=cert=LubkJsz3j1Fx7lXaWFZok2yJdomEyBC41QZ4YBYdNmD+Kue8JcWBa6UIo6c7s+lyWe+tCA tol=0.4
+wfd=wfgan
+# cert=cert=LubkJsz3j1Fx7lXaWFZok2yJdomEyBC41QZ4YBYdNmD+Kue8JcWBa6UIo6c7s+lyWe+tCA tol=0.4 p=0.5
 ## tamaraw
 # wfd=tamaraw
 # cert=cert=5iFm0lM0PMawmxtTtYSBwjkVODPrMLYz0DK960xPrrIUDl6uPObHGgan69FUFsDM4cwKSg nseg=100 rho-server=6 rho-client=14
@@ -95,7 +95,7 @@ init:
 	@chmod 777 ${HOST}/tor-config
 run:
 	@docker run -it --rm --name ${tag} ${ENV_VARS} ${VOLUMES}  --shm-size 2g --net=bridge  \
-	--privileged tbcrawl11 ${DOCKERSETUP_PATH}/Entrypoint.sh "$(wfd)" "$(tag)" "$(port)" "$(fingerprint)" "$(cert)" "crawler.py $(CRAWL_PARAMS)"
+	--privileged tbcrawl11 ${DOCKERSETUP_PATH}/Entrypoint.sh "$(wfd)" "$(tag)" "crawler.py $(CRAWL_PARAMS)"
 shell:
 	@docker run -it --rm --name ${tag} ${ENV_VARS} ${VOLUMES}  --shm-size 2g --net=bridge  \
 	--privileged tbcrawl11 /bin/bash

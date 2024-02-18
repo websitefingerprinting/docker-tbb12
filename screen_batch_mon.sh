@@ -19,6 +19,7 @@ echo "begin"
 
 LOG_DIR=/home/jgongac/tor-config
 
+# shellcheck disable=SC2164
 pushd /home/jgongac/docker-tbb12
 # make clean
 
@@ -32,6 +33,6 @@ host_num=4
 
 for i in $(seq 1 $host_num);
 do
-   screen -dmS "tbb$i" -L -Logfile ${LOG_DIR}/${host}_tbb${i}_screen.log make run tag=${host}_tbb$i  port=${port} wfd=${wfd} cert="${cert}";
+   screen -dmS "tbb$i" -L -Logfile ${LOG_DIR}/${host}_tbb${i}_screen.log make run tag=${host}_tbb"$i" port=${port} wfd=${wfd};
    sleep 2;
 done
