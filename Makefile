@@ -53,13 +53,13 @@ open=0
 # wfd=null
 # cert=""
 ## wfgan
-wfd=wfgan
+#wfd=wfgan
 # cert=cert=LubkJsz3j1Fx7lXaWFZok2yJdomEyBC41QZ4YBYdNmD+Kue8JcWBa6UIo6c7s+lyWe+tCA tol=0.4 p=0.5
 ## tamaraw
 # wfd=tamaraw
 # cert=cert=5iFm0lM0PMawmxtTtYSBwjkVODPrMLYz0DK960xPrrIUDl6uPObHGgan69FUFsDM4cwKSg nseg=100 rho-server=6 rho-client=14
 ## front
-# wfd=front
+ wfd=front
 # cert=cert=BsW9EOnSWm4I3lOQBHJ8LXwr84/Qch79DE/+NTvUWQCsipdE/hSbxd+JWAeC0LKQpUGkCQ w-min=1.0 w-max=14.0 n-server=6000 n-client=6000
 
 # wfd=tamaraw

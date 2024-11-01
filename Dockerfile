@@ -7,14 +7,24 @@ FROM python:3.7
 # Install required packages.
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install sudo build-essential autoconf git zip unzip xz-utils apt-utils psmisc vim
-RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install firefox-esr xvfb
-RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install libtool libevent-dev libssl-dev zlib1g  zlib1g-dev
+RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install firefox-esr xvfb packagekit-gtk3-module
+#RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install libtool libevent-dev libssl-dev zlib1g  zlib1g-dev
 RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install python3 python3-dev python3-setuptools python3-pip
 RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install net-tools ethtool tshark libpcap-dev iw tcpdump
 
+ARG DEBIAN_FRONTEND="noninteractive"
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+    file \
+    libdbus-glib-1-2 \
+    libgtk-3-0 \
+    libx11-xcb1 \
+    libxt6 \
+    libasound2 \
+  && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get clean \
-	&& rm -rf /var/lib/apt/lists/*
+#RUN apt-get clean \
+#	&& rm -rf /var/lib/apt/lists/*
 
 RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo 'Asia/Shanghai' >/etc/timezone
